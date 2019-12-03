@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void payer(View view) {
         Intent intent = new Intent(this, Payer.class);
-        intent.putExtra("panier", calculPanier());
+        intent.putExtra("panier", calculerMontantPanier());
         startActivity(intent);
     }
 
