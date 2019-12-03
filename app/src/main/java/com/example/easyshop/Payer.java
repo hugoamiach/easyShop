@@ -15,6 +15,6 @@ public class Payer extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         Double str = bundle.getDouble("panier", 0);
         TextView textView = (TextView) findViewById(R.id.panier);
-        textView.setText(String.valueOf(str));
+        textView.setText("Montant du panier " + String.valueOf(str) + "€");
     }
 }
