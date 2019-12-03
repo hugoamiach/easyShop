@@ -15,19 +15,32 @@
         android:layout_gravity="center"
         />
         <EditText
-            android:id="@+id/et_first_number"
+            android:id="@+id/nom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="First number" />
+            android:hint="Nom du titulaire" />
 
         <EditText
-            android:id="@+id/et_second_number"
+            android:id="@+id/numeroCarte"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Second number" />
+            android:hint="Numéro de carte" />
+
+    <EditText
+        android:id="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Date d'expiration" />
+
+    <EditText
+        android:id="@+id/cryptogramme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Cryptogramme" />
 
 
 
-    </LinearLayout>
+
+</LinearLayout>
 
 
