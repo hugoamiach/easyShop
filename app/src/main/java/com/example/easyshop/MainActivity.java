@@ -1,7 +1,6 @@
 package com.example.easyshop;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -16,11 +15,9 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import io.realm.Realm;
-import io.realm.RealmConfiguration;
-import io.realm.RealmResults;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity {
 
     private ArrayList<Produit> ProductiListCh;
     private ProductAdapter mProductAdapterCh;
@@ -32,13 +29,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Realm realm;
 
     public String MontantPanier() {
+        DecimalFormat df = new DecimalFormat("0.00");
+        return String.valueOf(df.format(calculPanier())) + "€";
+    }
+
+    private double calculPanier() {
         double res = 0;
         for (int i = 0; i < Panier.size(); i++) {
             res += Panier.get(i).price;
         }
-        DecimalFormat df = new DecimalFormat("0.00");
-        String test = String.valueOf(df.format(res)) + "€";
-        return test;
+        return res;
     }
 
     @Override
@@ -46,22 +46,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Realm.init(this);
 
-            Realm.init(this);
-            RealmConfiguration config = new RealmConfiguration.Builder().deleteRealmIfMigrationNeeded().name("myrealm.realm").build();
-            Realm.setDefaultConfiguration(config);
-            realm = Realm.getDefaultInstance();
-
-        Article a1 = new Article();
-        a1.setDescription("test");
-        a1.setNom("nom");
-        a1.setPrix(99.99);
-        a1.setUrl("url");
-        realm.beginTransaction();
-
-        Article realArt = realm.createObject(Article.class);
-        Article realmArt = realm.copyToRealm(a1);
-        realm.commitTransaction();
 
         Produit p1 = new Produit(1, "Timberland", "Timberland marron", 99.99, "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRKpOOAthYENJbddkT7DQMsaU3pcxqhPfWESjb2GdkMiDGl635iRoSlYS3VViC2ikz2rcjHIQK6ESeWZTqaNy-K_Ba2HUfk5B0unbr8KjCDHDqpWKZKA09wOZM&usqp=CAc");
         Produit p2 = new Produit(2, "Crocs", "Crocs on fire", 29.99, "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQdBkz7u0wCHbHNJaiABpSGHUWjVfwD3-ajkfwu8PFy2e6mNGE194QzZ0ArkT_r4umM3yS2eavj&usqp=CAc");
@@ -73,32 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Produit p8 = new Produit(3, "Hollister", "T-shirt Hollister", 29.99, "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcR9ESNt81wDyTwPqNtLaJB1BAsSjlJePa3rRD28MzJadrdBr4QVWJxYahM_StfT9bGrcV9mjIX78TP8V6ctXcwz_nYAigB161vNHhMWO_zC1TDd9sfQ0DqJJw&usqp=CAc");
         Produit p9 = new Produit(3, "Nike", "Nike AF1", 74.99, "");
 
-     //   realm.executeTransactionAsync(new Realm.Transaction() {
-                                         // public void execute(Realm realm) {
-                                            realm.beginTransaction();
-                                              String primaryKeyValue = "1";
-                                              Article art = realm.createObject(Article.class, primaryKeyValue);
-                                              art.setNom("nomArt");
-                                              art.setPrix(10);
-                                              realm.commitTransaction();
-
-                                 /*     }, new Realm.Transaction.OnSuccess() {
-                                          @Override
-                                          public void onSuccess() {
-                                              Log.v("Database", "Data insérée");
-                                          }
-                                      }, new Realm.Transaction.OnError() {
-                                          @Override
-                                          public void onError(Throwable error) {
-                                              Log.e("Database", error.getMessage());
-                                          }
-                                      }
-
-
-        ); */
-
-        RealmResults<Article> art2 = realm.where(Article.class).findAll();
-        System.out.println(art2);
+        realm = Realm.getDefaultInstance();
 
         Panier = new ArrayList<>();
         ProductiListCh = new ArrayList<>();
@@ -194,11 +155,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onDestroy() {
         super.onDestroy();
         realm.close();
-    }
-
-    @Override
-    public void onClick(View v) {
-
     }
 }
 
