@@ -1,5 +1,6 @@
 package com.example.easyshop;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -27,15 +28,24 @@ public class MainActivity extends AppCompatActivity {
     private ProductAdapter mProductAdapterPa;
     private Button mButton;
     private Realm realm;
+    private double montantPanier;
 
-    public String MontantPanier(){
-        double res =0;
-        for(int i=0;i<Panier.size();i++) {
-           res+=Panier.get(i).price;
+    public void payer (View view)
+    {
+        Intent intent = new Intent(this, Payer.class);
+        intent.putExtra("panier", montantPanier);
+        startActivity(intent);
+
+
+    }
+
+    public void calculerMontantPanier(){
+        double res = 0;
+        for (int i=0;i<Panier.size();i++) {
+           res += Panier.get(i).price;
         }
-        DecimalFormat df = new DecimalFormat("0.00");
-        String test = String.valueOf(df.format(res))+ "€";
-        return test;
+        DecimalFormat df = new DecimalFormat("#0.00");
+        montantPanier = Double.parseDouble(df.format(res));
     }
 
     @Override
@@ -74,7 +84,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         final TextView total = (TextView )findViewById(R.id.total);
-        total.setText("Montant du panier : " + MontantPanier());
+        calculerMontantPanier();
+        total.setText("Montant du panier : " + montantPanier + "€");
 
         TabHost tabs = (TabHost) findViewById(R.id.tabhost);
             tabs.setup();
@@ -88,14 +99,15 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, ProductiListCh.get(i).title + " ajouté au panier"   ,Toast.LENGTH_SHORT).show();
                     mProductAdapterPa.notifyDataSetChanged();
                     Panier.add(ProductiListCh.get(i));
-                    total.setText("Montant du panier : " + MontantPanier());
+                    calculerMontantPanier();
+                    total.setText("Montant du panier : " + montantPanier + "€");
                 }
             });
                 spec.setContent(R.id.listview);
             spec.setIndicator("Chaussures");
             tabs.addTab(spec);
             spec = tabs.newTabSpec("tag2");
-            final ListView listViewCatalogVt = (ListView) findViewById(R.id.listview1);
+            final ListView listViewCatalogVt = findViewById(R.id.listview1);
             mProductAdapterVt = new ProductAdapter(ProductiListVt,getLayoutInflater());
             listViewCatalogVt.setAdapter(mProductAdapterVt);
             listViewCatalogVt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -105,7 +117,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, ProductiListVt.get(i).title + " ajouté au panier"   ,Toast.LENGTH_SHORT).show();
                 mProductAdapterPa.notifyDataSetChanged();
                 Panier.add(ProductiListVt.get(i));
-                total.setText("Montant du panier : " + MontantPanier());
+                calculerMontantPanier();
+                total.setText("Montant du panier : " + montantPanier + "€");
             }
              });
             spec.setContent(R.id.listview1);
@@ -122,19 +135,22 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, Panier.get(i).title + " Suppression du panier"   ,Toast.LENGTH_SHORT).show();
                 mProductAdapterPa.notifyDataSetChanged();
                 Panier.remove(i);
-                total.setText("Montant du panier : " + MontantPanier());
+                calculerMontantPanier();
+                total.setText("Montant du panier : " + montantPanier + "€");
 
             }
         });
+        /*
         mButton = findViewById(R.id.payer);
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
             {
                 Toast.makeText(MainActivity.this,MontantPanier(),Toast.LENGTH_SHORT).show();
+
             }
         });
-
+*/
         mButton = findViewById(R.id.vider);
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,7 +159,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,"Le panier est vide",Toast.LENGTH_SHORT).show();
                 Panier.clear();
                 mProductAdapterPa.notifyDataSetChanged();
-                total.setText("Montant du panier : " + MontantPanier());
+                calculerMontantPanier();
+                total.setText("Montant du panier : " + montantPanier + "€");
             }
         });
 
