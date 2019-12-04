@@ -3,12 +3,10 @@ package com.example.easyshop.DAO;
 import android.content.Context;
 
 import com.example.easyshop.Entities.AbstractEntities;
-import com.example.easyshop.Produit;
 
 import java.util.List;
 
 import io.realm.Realm;
-import io.realm.RealmResults;
 
 public abstract class AbstractDAO<TEntities extends AbstractEntities> {
     private DataBase dataBase;
