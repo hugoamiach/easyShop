@@ -1,15 +1,19 @@
 package com.example.easyshop;
 
-public class Produit {
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
-    int id;
+public class Produit extends RealmObject {
+    private static int id_inc = 0;
+
+    @PrimaryKey
+    private int id;
     public String title;
-    public String image;
     public String description;
     public double price;
+    public String image;
 
-    public Produit(int _id, String _title, String _description, double _price,String _image) {
-        this.id = _id;
+    public Produit(String _title, String _description, double _price,String _image) {
         this.title = _title;
         this.description = _description;
         this.price = _price;
@@ -63,5 +67,7 @@ public class Produit {
         this.image = link_image;
     }
 
-
+    public static int getIdInc() {
+        return ++id_inc;
+    }
 }

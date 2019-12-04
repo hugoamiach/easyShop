@@ -1,12 +1,14 @@
 package com.example.easyshop;
 
+import com.example.easyshop.Entities.AbstractEntities;
+
 import io.realm.RealmModel;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class Article extends RealmObject {
-    @PrimaryKey
-    private int id;
+public class Article extends AbstractEntities {
+    private static int id_inc = 0;
+
     String nom;
     double prix;
     String description;
@@ -55,7 +57,7 @@ public class Article extends RealmObject {
         this.url = url;
     }
 
-    public int getId() {
-        return id;
+    public String toString() {
+        return "Article num : " + this.getId() + " " + this.nom + " " + this.prix + "€ " + this.description;
     }
 }
