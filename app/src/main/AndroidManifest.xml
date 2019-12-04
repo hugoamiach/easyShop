@@ -13,7 +13,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.example.easyshop.Payer" android:label="Payer" android:parentActivityName=".MainActivity">
+        <activity android:name="com.example.easyshop.Pay" android:label="Payer" android:parentActivityName=".MainActivity">
 
         </activity>
     </application>

@@ -8,6 +8,10 @@ public class Product {
     public String description;
     public double price;
 
+    public Product(int id, String title, String description, double price) {
+        new Product(id, title, description, price, "");
+    }
+
     public Product(int id, String title, String description, double price, String image) {
         this.id = id;
         this.title = title;
@@ -48,13 +52,11 @@ public class Product {
         this.description = desc;
     }
 
-    public void setPrice(double prix) {
-        this.price = prix;
-
+    public void setPrice(double price) {
+        this.price = price;
     }
 
-    public void setProductImage(String link_image) {
-        this.image = link_image;
+    public void setProductImage(String image) {
+        this.image = image;
     }
-
 }
