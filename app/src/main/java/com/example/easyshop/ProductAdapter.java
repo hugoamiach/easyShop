@@ -45,7 +45,7 @@ public class ProductAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         final ViewItem item;
 
-        if (convertView == null) {
+        if (convertView.equals(null)) {
             convertView = mInflater.inflate(R.layout.item_product, null);
             item = new ViewItem();
             item.image = convertView.findViewById(R.id.image);
@@ -60,10 +60,10 @@ public class ProductAdapter extends BaseAdapter {
 
         Product curProduct = mProductList.get(position);
         item.title.setText(curProduct.title);
-        item.price.setText("Prix " + curProduct.price);
+        item.price.setText("Prix ".concat(String.valueOf(curProduct.price)));
         item.description.setText( curProduct.description);
 
-        if (!curProduct.image.equals("")) {
+        if (!curProduct.image.equals(null)) {
             AQuery aq = new AQuery(item.image);
             aq.id(item.image).image(curProduct.image);
         } else {
