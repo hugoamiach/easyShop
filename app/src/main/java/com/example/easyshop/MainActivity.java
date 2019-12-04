@@ -17,7 +17,7 @@ import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.easyshop.Entities.Payer;
+import com.example.easyshop.Entities.Pay;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;

@@ -16,7 +16,7 @@
 <<<<<<< HEAD
         <activity android:name="com.example.easyshop.Pay" android:label="Payer" android:parentActivityName=".MainActivity">
 =======
-        <activity android:name="com.example.easyshop.Entities.Payer" android:label="Payer" android:parentActivityName=".MainActivity">
+        <activity android:name="com.example.easyshop.Entities.Pay" android:label="Payer" android:parentActivityName=".MainActivity">
 >>>>>>> 59287b799aa82bd5b85168a1787ad91fd5be81f1
 
         </activity>
