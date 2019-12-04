@@ -1,6 +1,6 @@
 package com.example.easyshop;
 
-public class Produit {
+public class Product {
 
     int id;
     public String title;
@@ -8,15 +8,12 @@ public class Produit {
     public String description;
     public double price;
 
-    public Produit(int _id, String _title, String _description, double _price,String _image) {
-        this.id = _id;
-        this.title = _title;
-        this.description = _description;
-        this.price = _price;
-        this.image = _image;
-    }
-
-    public Produit() {
+    public Product(int id, String title, String description, double price, String image) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.image = image;
     }
 
     public int getId() {
@@ -41,17 +38,14 @@ public class Produit {
 
     public void setId(int id) {
         this.id = id;
-
     }
 
     public void setTitle(String title) {
         this.title = title;
-
     }
 
     public void setDesc(String desc) {
         this.description = desc;
-
     }
 
     public void setPrice(double prix) {
@@ -62,6 +56,5 @@ public class Produit {
     public void setProductImage(String link_image) {
         this.image = link_image;
     }
-
 
 }
