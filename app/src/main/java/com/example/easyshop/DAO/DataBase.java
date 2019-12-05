@@ -2,11 +2,8 @@ package com.example.easyshop.DAO;
 
 import android.content.Context;
 
-import com.example.easyshop.Produit;
-
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
-import io.realm.RealmResults;
 
 public class DataBase {
     private Realm realm;

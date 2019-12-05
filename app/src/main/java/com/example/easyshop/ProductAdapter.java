@@ -11,11 +11,17 @@ import com.androidquery.AQuery;
 import java.util.List;
 
 public class ProductAdapter extends BaseAdapter {
+    private class ViewItem {
+        ImageView image;
+        TextView title;
+        TextView price;
+        TextView description;
+    }
 
-    private List<Produit> mProductList;
+    private List<Product> mProductList;
     private LayoutInflater mInflater;
 
-    public ProductAdapter(List<Produit> list, LayoutInflater inflater) {
+    public ProductAdapter(List<Product> list, LayoutInflater inflater) {
         mProductList = list;
         mInflater = inflater;
     }
@@ -39,42 +45,30 @@ public class ProductAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         final ViewItem item;
 
-        if (convertView == null) {
+        if (convertView.equals(null)) {
             convertView = mInflater.inflate(R.layout.item_product, null);
             item = new ViewItem();
-            item.image = (ImageView) convertView.findViewById(R.id.image);
-            item.title = (TextView) convertView.findViewById(R.id.title);
-            item.price = (TextView) convertView.findViewById(R.id.price);
-            item.description = (TextView) convertView.findViewById(R.id.desc);
+            item.image = convertView.findViewById(R.id.image);
+            item.title = convertView.findViewById(R.id.title);
+            item.price = convertView.findViewById(R.id.price);
+            item.description = convertView.findViewById(R.id.desc);
 
             convertView.setTag(item);
         } else {
             item = (ViewItem) convertView.getTag();
         }
 
-        Produit curProduct = mProductList.get(position);
-
+        Product curProduct = mProductList.get(position);
         item.title.setText(curProduct.title);
-        item.price.setText("Price " + curProduct.price);
+        item.price.setText("Prix ".concat(String.valueOf(curProduct.price)));
         item.description.setText( curProduct.description);
 
-        if (!curProduct.image.equals("")) {
+        if (!curProduct.image.equals(null)) {
             AQuery aq = new AQuery(item.image);
             aq.id(item.image).image(curProduct.image);
         } else {
             item.image.setImageResource(R.drawable.ic_launcher_background);
         }
-
         return convertView;
     }
-
-    private class ViewItem {
-        ImageView image;
-        TextView title;
-        TextView price;
-        TextView description;
-    }
-
-
-
 }

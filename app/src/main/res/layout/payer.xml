@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Entities.Payer">
-
+    tools:context=".Pay">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,9 +23,11 @@
             android:id="@+id/numeroCarte"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:digits="01234 56789"
+            android:maxLength="16"
             android:hint="Numéro de carte" />
 
-    <EditText
+        <EditText
         android:id="@+id/date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,8 +37,9 @@
         android:id="@+id/cryptogramme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:digits="0123456789+"
+        android:maxLength="3"
         android:hint="Cryptogramme" />
-
 
 
 

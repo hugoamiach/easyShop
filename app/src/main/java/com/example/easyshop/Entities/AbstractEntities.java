@@ -1,3 +1,4 @@
+/*
 package com.example.easyshop.Entities;
 
 import io.realm.RealmObject;
@@ -11,3 +12,4 @@ public abstract class AbstractEntities extends RealmObject {
         return id;
     }
 }
+*/
