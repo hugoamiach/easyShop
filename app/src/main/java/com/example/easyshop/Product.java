@@ -1,9 +1,11 @@
 package com.example.easyshop;
 
+import com.example.easyshop.Entities.AbstractEntities;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class Product extends RealmObject {
+public class Product extends AbstractEntities {
     private static int id_inc = 0;
 
     @PrimaryKey

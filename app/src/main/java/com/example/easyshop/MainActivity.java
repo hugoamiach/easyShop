@@ -62,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Realm.init(this);
 
-
         Product p1 = new Product(1, "Timberland", "Timberland marron", 99.99, "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRKpOOAthYENJbddkT7DQMsaU3pcxqhPfWESjb2GdkMiDGl635iRoSlYS3VViC2ikz2rcjHIQK6ESeWZTqaNy-K_Ba2HUfk5B0unbr8KjCDHDqpWKZKA09wOZM&usqp=CAc");
         Product p2 = new Product(2, "Crocs", "Crocs on fire", 29.99, "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQdBkz7u0wCHbHNJaiABpSGHUWjVfwD3-ajkfwu8PFy2e6mNGE194QzZ0ArkT_r4umM3yS2eavj&usqp=CAc");
         Product p3 = new Product(3, "Nike", "Nike AF1", 74.99, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQR7TP_JYFrILQeX7E1zQX86Khzimsn95BfF5bF-ubVmdMx-wZb5Q&s");
@@ -74,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         Product p9 = new Product(3, "Nike", "Nike AF1", 74.99);
         init();
         Panier = new ArrayList<>();
-
+        ProductiListCh = new ArrayList<>();
         ProductiListCh.add(p1);
         ProductiListCh.add(p2);
         ProductiListCh.add(p3);
@@ -190,14 +189,14 @@ public class MainActivity extends AppCompatActivity {
         return realProduit;
     }
 
-    public void deleteProduits(){
+   /* public void deleteProduits(){
         RealmResults<Product> liste = realm.where(Product.class).findAll();
         for(Product p: liste){
             realm.beginTransaction();
             p.deleteFromRealm();
             realm.commitTransaction();
         }
-    }
+    }*/
 
     public List<Product> searchAllProduits() {
         return realm.where(Product.class).findAll();
