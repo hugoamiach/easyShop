@@ -33,4 +33,3 @@ public class Authentification  extends AppCompatActivity {
         });
     }
 }
-
