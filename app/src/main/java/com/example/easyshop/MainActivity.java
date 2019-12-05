@@ -17,11 +17,8 @@ import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.easyshop.Entities.Pay;
-
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
-import io.realm.RealmResults;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -58,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Realm.init(this);
+        //Realm.init(this);
 
         Product p1 = new Product(1, "Timberland", "Timberland marron", 99.99, "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRKpOOAthYENJbddkT7DQMsaU3pcxqhPfWESjb2GdkMiDGl635iRoSlYS3VViC2ikz2rcjHIQK6ESeWZTqaNy-K_Ba2HUfk5B0unbr8KjCDHDqpWKZKA09wOZM&usqp=CAc");
         Product p2 = new Product(2, "Crocs", "Crocs on fire", 29.99, "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQdBkz7u0wCHbHNJaiABpSGHUWjVfwD3-ajkfwu8PFy2e6mNGE194QzZ0ArkT_r4umM3yS2eavj&usqp=CAc");
@@ -68,12 +65,10 @@ public class MainActivity extends AppCompatActivity {
         Product p6 = new Product(3, "Nasa", "Pull Nasa", 64.99, "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQk1D8qTVZOSICIFxqt3YWbUDDzQY_I_iqiguDIqFqFCc4gWvoLiwv70Zd6379A_FhoogEzO2uJ3Sf_h0EX11IyU-5WkbPM0Vw9Qvh74SQ&usqp=CAc");
         Product p7 = new Product(3, "Levis", "Jean Levis", 100, "https://www.street-online.com/Files/17303/Img/21/jean-levis-femme-721-taille-haute-skinny-to-the-nine-188820188-zoom-zoom.jpg");
         Product p8 = new Product(3, "Hollister", "T-shirt Hollister", 29.99, "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcR9ESNt81wDyTwPqNtLaJB1BAsSjlJePa3rRD28MzJadrdBr4QVWJxYahM_StfT9bGrcV9mjIX78TP8V6ctXcwz_nYAigB161vNHhMWO_zC1TDd9sfQ0DqJJw&usqp=CAc");
-        Product p9 = new Product(3, "Nike", "Nike AF1", 74.99);
 
-        realm = Realm.getDefaultInstance();
-
+        //Product p9 = new Product(3, "Nike", "Nike AF1", 74.99);
+        //init();
         Panier = new ArrayList<>();
-        ProductiListVt = new ArrayList<>();
         ProductiListCh = new ArrayList<>();
 
         ProductiListCh.add(p1);
@@ -97,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         TabHost.TabSpec spec = tabs.newTabSpec("tag1");
         final ListView listViewCatalogCh = findViewById(R.id.listview);
         mProductAdapterCh = new ProductAdapter(ProductiListCh, getLayoutInflater());
-        listViewCatalogCh.setAdapter(mProductAdapterCh);
+        listViewCatalogCh.setAdapter(mProductAdapterCh); //Pose problème
         listViewCatalogCh.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -164,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
         tabs.addTab(spec);
     }
 
-    public void init() {
+    /*public void init() {
         Realm.init(this);
         RealmConfiguration config = new RealmConfiguration.Builder().deleteRealmIfMigrationNeeded().name("myrealm.realm").build();
         Realm.setDefaultConfiguration(config);
@@ -178,9 +173,9 @@ public class MainActivity extends AppCompatActivity {
         Product realmProduit = realm.copyToRealm(product);
         realm.commitTransaction();
         return realProduit;
-    }
+    }*/
 
-    public void deleteProduits(){
+   /* public void deleteProduits(){
         RealmResults<Product> liste = realm.where(Product.class).findAll();
         for(Product p: liste){
             realm.beginTransaction();
@@ -196,6 +191,6 @@ public class MainActivity extends AppCompatActivity {
     public void onDestroy() {
         super.onDestroy();
         realm.close();
-    }
+    }*/
 }
 

@@ -17,5 +17,6 @@
         </activity>
         <activity android:name="com.example.easyshop.Pay" android:label="Pay" android:parentActivityName=".MainActivity">
         </activity>
+
     </application>
 </manifest>
