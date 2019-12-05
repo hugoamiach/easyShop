@@ -1,6 +1,8 @@
 package com.example.easyshop;
 
-public class Product {
+import com.example.easyshop.Entities.AbstractEntities;
+
+public class Product extends AbstractEntities {
 
     int id;
     public String title;

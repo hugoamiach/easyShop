@@ -2,7 +2,6 @@
 package com.example.easyshop.Entities;
 
 import io.realm.RealmModel;
-import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
 public abstract class AbstractEntities implements RealmModel {

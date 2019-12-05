@@ -158,39 +158,5 @@ public class MainActivity extends AppCompatActivity {
         spec.setIndicator("Panier");
         tabs.addTab(spec);
     }
-
-    /*public void init() {
-        Realm.init(this);
-        RealmConfiguration config = new RealmConfiguration.Builder().deleteRealmIfMigrationNeeded().name("myrealm.realm").build();
-        Realm.setDefaultConfiguration(config);
-        realm = Realm.getDefaultInstance();
-    }
-
-    public Product createProduit(Product product) {
-        realm.beginTransaction();
-        Product realProduit = realm.createObject(Product.class, Product.getIdInc());
-
-        Product realmProduit = realm.copyToRealm(product);
-        realm.commitTransaction();
-        return realProduit;
-    }*/
-
-   /* public void deleteProduits(){
-        RealmResults<Product> liste = realm.where(Product.class).findAll();
-        for(Product p: liste){
-            realm.beginTransaction();
-            p.deleteFromRealm();
-            realm.commitTransaction();
-        }
-    }
-
-    public List<Product> searchAllProduits() {
-        return realm.where(Product.class).findAll();
-    }
-
-    public void onDestroy() {
-        super.onDestroy();
-        realm.close();
-    }*/
 }
 
