@@ -41,7 +41,19 @@
         android:maxLength="3"
         android:hint="Cryptogramme" />
 
+    <EditText
+        android:id="@+id/codePromo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Code Promo" />
 
+    <Button
+        android:id = "@+id/buttonCodePromo"
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:onClick = "codePromo"
+        android:text = "Valider Code"
+        />
 
 </LinearLayout>
 
