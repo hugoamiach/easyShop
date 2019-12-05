@@ -1,4 +1,5 @@
 package com.example.easyshop;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,7 +57,7 @@ public class ProductAdapter extends BaseAdapter {
 
         item.title.setText(curProduct.title);
         item.price.setText("Price " + curProduct.price);
-        item.description.setText( curProduct.description);
+        item.description.setText(curProduct.description);
 
         if (!curProduct.image.equals("")) {
             AQuery aq = new AQuery(item.image);
@@ -74,7 +75,4 @@ public class ProductAdapter extends BaseAdapter {
         TextView price;
         TextView description;
     }
-
-
-
 }
