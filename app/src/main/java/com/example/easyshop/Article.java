@@ -1,12 +1,19 @@
 package com.example.easyshop;
 
-public class Article {
-    String nom;
-    double prix;
-    String description;
-    String url;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
-    public Article(String nom, double prix, String description, String url) {
+public class Article extends RealmObject {
+    private String nom;
+    private double prix;
+    private String description;
+    private String url;
+
+    public Article() {
+        new Article("default", "default", 0, "");
+    }
+
+    public Article(String nom, String description, double prix, String url) {
         this.nom = nom;
         this.prix = prix;
         this.description = description;
@@ -43,5 +50,9 @@ public class Article {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String toString() {
+        return "Article num : ".concat(this.nom).concat(" ").concat(String.valueOf(this.prix)).concat("€ ").concat(this.description);
     }
 }
