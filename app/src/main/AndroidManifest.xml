@@ -14,12 +14,8 @@
         </activity>
 
         <activity android:name="com.example.easyshop.MainActivity" android:label="MainActivity" android:parentActivityName=".MainActivity">
-
         </activity>
-
         <activity android:name="com.example.easyshop.Payer" android:label="Payer" android:parentActivityName=".MainActivity">
-
         </activity>
     </application>
-
 </manifest>
