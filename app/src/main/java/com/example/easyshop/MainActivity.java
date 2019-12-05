@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         /*
-        mButton = findViewById(R.id.payer);
+        mButton = findViewById(R.id.pay);
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
