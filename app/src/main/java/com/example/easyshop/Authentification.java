@@ -13,8 +13,8 @@ public class Authentification  extends AppCompatActivity {
 
 
     public void main(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        Intent mainActivity = new Intent(this, MainActivity.class);
+        startActivity(mainActivity);
     }
 
     @Override
@@ -29,12 +29,11 @@ public class Authentification  extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if(username.getText().toString().equals(password.getText().toString())){
-                    Toast.makeText(getApplicationContext(),
-                            "Redirecting...",Toast.LENGTH_SHORT).show();
-                    main(v);
-                }else{
-                    Toast.makeText(getApplicationContext(), "Wrong Credentials",Toast.LENGTH_SHORT).show();
+                if (username.getText().toString().equals(password.getText().toString())) {
+                    Intent mainActivity = new Intent(Authentification.this, MainActivity.class);
+                    startActivity(mainActivity);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Erreur d'authentification",Toast.LENGTH_SHORT).show();
                 }
             }
         });

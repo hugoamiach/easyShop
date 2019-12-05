@@ -14,7 +14,7 @@ public class Product extends RealmObject {
     public String image;
 
     public Product() {
-        new Product(0, "default", "default", 0, "");
+        new Product(0, "default", "default", 0);
     }
 
     public Product(int id, String title, String description, double price) {
