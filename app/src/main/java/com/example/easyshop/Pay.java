@@ -17,18 +17,20 @@ public class Pay extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pay);
         Bundle bundle = getIntent().getExtras();
+        assert bundle != null;
         final String str = bundle.getString("panier");
-        final TextView textView = (TextView) findViewById(R.id.panier);
+        final TextView textView = findViewById(R.id.panier);
+        assert str != null;
         textView.setText("Montant du panier ".concat(str).concat("€"));
-        final EditText codePromo = (EditText) findViewById(R.id.codePromo);
-        Button b1 = (Button) findViewById(R.id.buttonCodePromo);
+        final EditText codePromo = findViewById(R.id.codePromo);
+        Button b1 = findViewById(R.id.buttonCodePromo);
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (codePromo.getText().toString().equals("HOUHOU2019") && !code[0]) {
                     Toast.makeText(getApplicationContext(), "Code Promo Valide", Toast.LENGTH_SHORT).show();
                     code[0] = true;
-                    double value = Double.valueOf(str);
+                    double value = Double.parseDouble(str);
                     value = value * 0.9;
                     DecimalFormat df = new DecimalFormat("0.00");
                     textView.setText("Montant du panier ".concat(df.format(value)).concat("€"));
