@@ -1,4 +1,4 @@
-package com.example.easyshop.DAO;
+/*package com.example.easyshop.DAO;
 
 import android.content.Context;
 
@@ -9,3 +9,4 @@ public class ArticleDAO extends AbstractDAO<Article> {
         super(context, Article.class);
     }
 }
+*/

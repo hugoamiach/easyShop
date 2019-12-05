@@ -1,3 +1,4 @@
+/*
 package com.example.easyshop.DAO;
 
 import android.content.Context;
@@ -57,3 +58,4 @@ public abstract class AbstractDAO<TEntities extends AbstractEntities> {
         return realmObject;
     }
 }
+*/

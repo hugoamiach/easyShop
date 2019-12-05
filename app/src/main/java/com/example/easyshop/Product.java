@@ -13,6 +13,10 @@ public class Product extends RealmObject {
     public double price;
     public String image;
 
+    public Product() {
+        new Product(0, "default", "default", 0, "");
+    }
+
     public Product(int id, String title, String description, double price) {
         new Product(id, title, description, price, "");
     }
