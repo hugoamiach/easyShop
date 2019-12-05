@@ -16,6 +16,7 @@ import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.easyshop.DAO.ArticleDAO;
 import com.example.easyshop.Entities.Payer;
 
 import io.realm.Realm;
@@ -198,12 +199,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public Produit createProduit(Produit produit) {
-        realm.beginTransaction();
-        Produit realProduit = realm.createObject(Produit.class, Produit.getIdInc());
+        /*realm.beginTransaction();
+        Produit realProduit = realm.createObject(Produit.class, Produit.getRealm());
 
         Produit realmProduit = realm.copyToRealm(produit);
         realm.commitTransaction();
-        return realProduit;
+        return realProduit;*/
+        return new Produit();
     }
 
     public void deleteProduits(){
