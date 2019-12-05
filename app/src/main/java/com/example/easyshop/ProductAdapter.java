@@ -12,10 +12,10 @@ import java.util.List;
 
 public class ProductAdapter extends BaseAdapter {
 
-    private List<Produit> mProductList;
+    private List<Product> mProductList;
     private LayoutInflater mInflater;
 
-    public ProductAdapter(List<Produit> list, LayoutInflater inflater) {
+    public ProductAdapter(List<Product> list, LayoutInflater inflater) {
         mProductList = list;
         mInflater = inflater;
     }
@@ -52,7 +52,7 @@ public class ProductAdapter extends BaseAdapter {
             item = (ViewItem) convertView.getTag();
         }
 
-        Produit curProduct = mProductList.get(position);
+        Product curProduct = mProductList.get(position);
 
         item.title.setText(curProduct.title);
         item.price.setText("Price " + curProduct.price);

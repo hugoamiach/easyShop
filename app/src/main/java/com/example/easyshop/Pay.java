@@ -6,16 +6,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.text.DecimalFormat;
 
 public class Pay extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         final boolean[] code = {false};
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pay);

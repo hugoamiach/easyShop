@@ -1,6 +1,8 @@
 package com.example.easyshop;
 
-public class Produit {
+import com.example.easyshop.Entities.AbstractEntities;
+
+public class Product extends AbstractEntities {
 
     int id;
     public String title;
@@ -8,7 +10,7 @@ public class Produit {
     public String description;
     public double price;
 
-    public Produit(int _id, String _title, String _description, double _price,String _image) {
+    public Product(int _id, String _title, String _description, double _price,String _image) {
         this.id = _id;
         this.title = _title;
         this.description = _description;
@@ -16,7 +18,7 @@ public class Produit {
         this.image = _image;
     }
 
-    public Produit() {
+    public Product() {
     }
 
     public int getId() {

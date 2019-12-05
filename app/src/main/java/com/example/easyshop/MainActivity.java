@@ -12,24 +12,27 @@ import android.widget.Toast;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import io.realm.Realm;
+import io.realm.RealmConfiguration;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<Produit> ProductiListCh;
+    private ArrayList<Product> ProductiListCh;
     private ProductAdapter mProductAdapterCh;
-    private ArrayList<Produit> ProductiListVt;
+    private ArrayList<Product> ProductiListVt;
     private ProductAdapter mProductAdapterVt;
-    private ArrayList<Produit> Panier;
+    private ArrayList<Product> Panier;
     private ProductAdapter mProductAdapterPa;
     private Button mButton;
     private Realm realm;
 
-    public void payer(View view) {
-        Intent intent = new Intent(this, Payer.class);
+    public void pay(View view) {
+        Intent intent = new Intent(this, Pay.class);
         intent.putExtra("panier", calculerMontantPanier());
         startActivity(intent);
     }
@@ -49,48 +52,47 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Realm.init(this);
+        //Realm.init(this);
 
+        Product p1 = new Product(1, "Timberland", "Timberland marron", 99.99, "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRKpOOAthYENJbddkT7DQMsaU3pcxqhPfWESjb2GdkMiDGl635iRoSlYS3VViC2ikz2rcjHIQK6ESeWZTqaNy-K_Ba2HUfk5B0unbr8KjCDHDqpWKZKA09wOZM&usqp=CAc");
+        Product p2 = new Product(2, "Crocs", "Crocs on fire", 29.99, "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQdBkz7u0wCHbHNJaiABpSGHUWjVfwD3-ajkfwu8PFy2e6mNGE194QzZ0ArkT_r4umM3yS2eavj&usqp=CAc");
+        Product p3 = new Product(3, "Nike", "Nike AF1", 74.99, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQR7TP_JYFrILQeX7E1zQX86Khzimsn95BfF5bF-ubVmdMx-wZb5Q&s");
+        Product p4 = new Product(4, "Adidas", "Yeezy Boost", 199.99, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3GjEeWZqsbJUrHjzfq87d1ethBooqQ1TIgj_aWzmex9EVa3GspA&s");
+        Product p5 = new Product(4, "Adidas", "Maillot Juventus", 99.99, "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSy_BbJNtcBkr7ejGa8_OUONGNFl8DHa-rWiMhV-hloZO6OP6bUNvln2iojGC9RGsiqfY_oVFhnvP6rbZwWs3S-d4XBZKikPnt4oTNBb-pHoFTXUkJw6knvSg&usqp=CAc");
+        Product p6 = new Product(3, "Nasa", "Pull Nasa", 64.99, "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQk1D8qTVZOSICIFxqt3YWbUDDzQY_I_iqiguDIqFqFCc4gWvoLiwv70Zd6379A_FhoogEzO2uJ3Sf_h0EX11IyU-5WkbPM0Vw9Qvh74SQ&usqp=CAc");
+        Product p7 = new Product(3, "Levis", "Jean Levis", 100, "https://www.street-online.com/Files/17303/Img/21/jean-levis-femme-721-taille-haute-skinny-to-the-nine-188820188-zoom-zoom.jpg");
+        Product p8 = new Product(3, "Hollister", "T-shirt Hollister", 29.99, "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcR9ESNt81wDyTwPqNtLaJB1BAsSjlJePa3rRD28MzJadrdBr4QVWJxYahM_StfT9bGrcV9mjIX78TP8V6ctXcwz_nYAigB161vNHhMWO_zC1TDd9sfQ0DqJJw&usqp=CAc");
 
-        Produit p1 = new Produit(1, "Timberland", "Timberland marron", 99.99, "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRKpOOAthYENJbddkT7DQMsaU3pcxqhPfWESjb2GdkMiDGl635iRoSlYS3VViC2ikz2rcjHIQK6ESeWZTqaNy-K_Ba2HUfk5B0unbr8KjCDHDqpWKZKA09wOZM&usqp=CAc");
-        Produit p2 = new Produit(2, "Crocs", "Crocs on fire", 29.99, "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQdBkz7u0wCHbHNJaiABpSGHUWjVfwD3-ajkfwu8PFy2e6mNGE194QzZ0ArkT_r4umM3yS2eavj&usqp=CAc");
-        Produit p3 = new Produit(3, "Nike", "Nike AF1", 74.99, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQR7TP_JYFrILQeX7E1zQX86Khzimsn95BfF5bF-ubVmdMx-wZb5Q&s");
-        Produit p4 = new Produit(4, "Adidas", "Yeezy Boost", 199.99, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3GjEeWZqsbJUrHjzfq87d1ethBooqQ1TIgj_aWzmex9EVa3GspA&s");
-        Produit p5 = new Produit(4, "Adidas", "Maillot Juventus", 99.99, "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSy_BbJNtcBkr7ejGa8_OUONGNFl8DHa-rWiMhV-hloZO6OP6bUNvln2iojGC9RGsiqfY_oVFhnvP6rbZwWs3S-d4XBZKikPnt4oTNBb-pHoFTXUkJw6knvSg&usqp=CAc");
-        Produit p6 = new Produit(3, "Nasa", "Pull Nasa", 64.99, "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQk1D8qTVZOSICIFxqt3YWbUDDzQY_I_iqiguDIqFqFCc4gWvoLiwv70Zd6379A_FhoogEzO2uJ3Sf_h0EX11IyU-5WkbPM0Vw9Qvh74SQ&usqp=CAc");
-        Produit p7 = new Produit(3, "Levis", "Jean Levis", 100, "https://www.street-online.com/Files/17303/Img/21/jean-levis-femme-721-taille-haute-skinny-to-the-nine-188820188-zoom-zoom.jpg");
-        Produit p8 = new Produit(3, "Hollister", "T-shirt Hollister", 29.99, "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcR9ESNt81wDyTwPqNtLaJB1BAsSjlJePa3rRD28MzJadrdBr4QVWJxYahM_StfT9bGrcV9mjIX78TP8V6ctXcwz_nYAigB161vNHhMWO_zC1TDd9sfQ0DqJJw&usqp=CAc");
-        Produit p9 = new Produit(3, "Nike", "Nike AF1", 74.99, "");
-
-        realm = Realm.getDefaultInstance();
-
+        //Product p9 = new Product(3, "Nike", "Nike AF1", 74.99);
+        //init();
         Panier = new ArrayList<>();
         ProductiListCh = new ArrayList<>();
+        ProductiListVt = new ArrayList<>();
+
         ProductiListCh.add(p1);
         ProductiListCh.add(p2);
         ProductiListCh.add(p3);
         ProductiListCh.add(p4);
 
-        ProductiListVt = new ArrayList<>();
         ProductiListVt.add(p5);
         ProductiListVt.add(p6);
         ProductiListVt.add(p7);
         ProductiListVt.add(p8);
+        //ProductiListVt.add(p9);
 
 
-        final TextView total = (TextView) findViewById(R.id.total);
+        final TextView total = findViewById(R.id.total);
         calculerMontantPanier();
         total.setText("Montant du panier : " + this.calculerMontantPanier() + "€");
 
-        TabHost tabs = (TabHost) findViewById(R.id.tabhost);
+        TabHost tabs = findViewById(R.id.tabhost);
         tabs.setup();
         TabHost.TabSpec spec = tabs.newTabSpec("tag1");
-        final ListView listViewCatalogCh = (ListView) findViewById(R.id.listview);
+        final ListView listViewCatalogCh = findViewById(R.id.listview);
         mProductAdapterCh = new ProductAdapter(ProductiListCh, getLayoutInflater());
-        listViewCatalogCh.setAdapter(mProductAdapterCh);
+        listViewCatalogCh.setAdapter(mProductAdapterCh); //Pose problème
         listViewCatalogCh.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -123,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         spec.setIndicator("Vetements");
         tabs.addTab(spec);
         spec = tabs.newTabSpec("tag3");
-        final ListView listViewCatalogPa = (ListView) findViewById(R.id.listview2);
+        final ListView listViewCatalogPa = findViewById(R.id.listview2);
         mProductAdapterPa = new ProductAdapter(Panier, getLayoutInflater());
         listViewCatalogPa.setAdapter(mProductAdapterPa);
         listViewCatalogPa.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -135,20 +137,11 @@ public class MainActivity extends AppCompatActivity {
                 Panier.remove(i);
                 calculerMontantPanier();
                 total.setText("Montant du panier : " + calculerMontantPanier() + "€");
-
             }
-        });
-        /*
-        mButton = findViewById(R.id.pay);
-        mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-                Toast.makeText(MainActivity.this,MontantPanier(),Toast.LENGTH_SHORT).show();
 
-            }
+
         });
-*/
+
         mButton = findViewById(R.id.vider);
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,11 +157,6 @@ public class MainActivity extends AppCompatActivity {
         spec.setContent(R.id.listview2);
         spec.setIndicator("Panier");
         tabs.addTab(spec);
-    }
-
-    public void onDestroy() {
-        super.onDestroy();
-        realm.close();
     }
 }
 

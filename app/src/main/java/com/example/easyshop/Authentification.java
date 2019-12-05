@@ -11,33 +11,25 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Authentification  extends AppCompatActivity {
 
-
-    public void main(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.authentification);
 
-        final EditText username = (EditText) findViewById(R.id.login);
-        final EditText password = (EditText) findViewById(R.id.password);
-        Button b1 = (Button)findViewById(R.id.buttonlogin);
+        final EditText username = findViewById(R.id.login);
+        final EditText password = findViewById(R.id.password);
+        Button b1 = findViewById(R.id.buttonlogin);
 
         b1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if(username.getText().toString().equals(password.getText().toString())){
-                    Toast.makeText(getApplicationContext(),
-                            "Redirecting...",Toast.LENGTH_SHORT).show();
-                    main(v);
-                }else{
-                    Toast.makeText(getApplicationContext(), "Wrong Credentials",Toast.LENGTH_SHORT).show();
+                if (username.getText().toString().equals(password.getText().toString())) {
+                    Intent mainActivity = new Intent(Authentification.this, MainActivity.class);
+                    startActivity(mainActivity);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Erreur d'authentification",Toast.LENGTH_SHORT).show();
                 }
             }
         });
-        }
     }
-
+}

@@ -75,9 +75,9 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:text="Payer"
-                            android:id="@+id/payer"
+                            android:id="@+id/pay"
                             android:textAlignment="center"
-                            android:onClick="payer"/>
+                            android:onClick="pay"/>
 
 
                     </LinearLayout>
