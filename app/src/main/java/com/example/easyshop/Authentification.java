@@ -11,12 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Authentification  extends AppCompatActivity {
 
-
-    public void main(View view) {
-        Intent mainActivity = new Intent(this, MainActivity.class);
-        startActivity(mainActivity);
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
