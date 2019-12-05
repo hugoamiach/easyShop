@@ -3,30 +3,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:baselineAligned="false"
     android:orientation="vertical"
     tools:context=".Authentification">
 
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/utilisateur" />
 
     <EditText
-        android:id = "@+id/login"
-        android:layout_width = "wrap_content"
-        android:layout_height = "wrap_content"
-        />
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:inputType="textShortMessage" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/mot_de_passe" />
 
     <EditText
-        android:id = "@+id/password"
-        android:layout_width = "wrap_content"
-        android:layout_height = "wrap_content"
-        android:inputType = "textPassword" />
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:accessibilityLiveRegion="none"
+        android:autofillHints=""
+        android:inputType="textPassword" />
 
     <Button
-        android:id = "@+id/buttonlogin"
-        android:layout_width = "wrap_content"
-        android:layout_height = "wrap_content"
-        android:onClick = "main"
-        android:text = "Login"
-        />
+        android:id="@+id/buttonlogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="main"
+        android:text="@string/connexion"
+        android:visibility="visible" />
 
 
 </LinearLayout>

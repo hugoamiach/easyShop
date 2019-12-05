@@ -22,9 +22,9 @@ public class Authentification  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.authentification);
 
-        final EditText username = (EditText) findViewById(R.id.login);
-        final EditText password = (EditText) findViewById(R.id.password);
-        Button b1 = (Button)findViewById(R.id.buttonlogin);
+        final EditText username = findViewById(R.id.login);
+        final EditText password = findViewById(R.id.password);
+        Button b1 = findViewById(R.id.buttonlogin);
 
         b1.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -38,6 +38,6 @@ public class Authentification  extends AppCompatActivity {
                 }
             }
         });
-        }
     }
+}
 
