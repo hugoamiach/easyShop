@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mButton;
     private Realm realm;
 
-    public void payer(View view) {
+    public void pay(View view) {
         Intent intent = new Intent(this, Pay.class);
         intent.putExtra("panier", calculerMontantPanier());
         startActivity(intent);
@@ -51,10 +51,8 @@ public class MainActivity extends AppCompatActivity {
         return res;
     }
 
-    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //Realm.init(this);
@@ -67,16 +65,17 @@ public class MainActivity extends AppCompatActivity {
         Product p6 = new Product(3, "Nasa", "Pull Nasa", 64.99, "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQk1D8qTVZOSICIFxqt3YWbUDDzQY_I_iqiguDIqFqFCc4gWvoLiwv70Zd6379A_FhoogEzO2uJ3Sf_h0EX11IyU-5WkbPM0Vw9Qvh74SQ&usqp=CAc");
         Product p7 = new Product(3, "Levis", "Jean Levis", 100, "https://www.street-online.com/Files/17303/Img/21/jean-levis-femme-721-taille-haute-skinny-to-the-nine-188820188-zoom-zoom.jpg");
         Product p8 = new Product(3, "Hollister", "T-shirt Hollister", 29.99, "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcR9ESNt81wDyTwPqNtLaJB1BAsSjlJePa3rRD28MzJadrdBr4QVWJxYahM_StfT9bGrcV9mjIX78TP8V6ctXcwz_nYAigB161vNHhMWO_zC1TDd9sfQ0DqJJw&usqp=CAc");
+
         //Product p9 = new Product(3, "Nike", "Nike AF1", 74.99);
         //init();
         Panier = new ArrayList<>();
         ProductiListCh = new ArrayList<>();
+
         ProductiListCh.add(p1);
         ProductiListCh.add(p2);
         ProductiListCh.add(p3);
         ProductiListCh.add(p4);
 
-        ProductiListVt = new ArrayList<>();
         ProductiListVt.add(p5);
         ProductiListVt.add(p6);
         ProductiListVt.add(p7);
@@ -84,14 +83,14 @@ public class MainActivity extends AppCompatActivity {
         //ProductiListVt.add(p9);
 
 
-        final TextView total = (TextView) findViewById(R.id.total);
+        final TextView total = findViewById(R.id.total);
         calculerMontantPanier();
         total.setText("Montant du panier : " + this.calculerMontantPanier() + "€");
 
-        TabHost tabs = (TabHost) findViewById(R.id.tabhost);
+        TabHost tabs = findViewById(R.id.tabhost);
         tabs.setup();
         TabHost.TabSpec spec = tabs.newTabSpec("tag1");
-        final ListView listViewCatalogCh = (ListView) findViewById(R.id.listview);
+        final ListView listViewCatalogCh = findViewById(R.id.listview);
         mProductAdapterCh = new ProductAdapter(ProductiListCh, getLayoutInflater());
         listViewCatalogCh.setAdapter(mProductAdapterCh); //Pose problème
         listViewCatalogCh.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -126,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         spec.setIndicator("Vetements");
         tabs.addTab(spec);
         spec = tabs.newTabSpec("tag3");
-        final ListView listViewCatalogPa = (ListView) findViewById(R.id.listview2);
+        final ListView listViewCatalogPa = findViewById(R.id.listview2);
         mProductAdapterPa = new ProductAdapter(Panier, getLayoutInflater());
         listViewCatalogPa.setAdapter(mProductAdapterPa);
         listViewCatalogPa.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -142,17 +141,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         });
-        /*
-        mButton = findViewById(R.id.payer);
-        mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-                Toast.makeText(MainActivity.this,MontantPanier(),Toast.LENGTH_SHORT).show();
 
-            }
-        });
-*/
         mButton = findViewById(R.id.vider);
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
