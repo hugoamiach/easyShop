@@ -1,34 +1,22 @@
 package com.example.easyshop;
 
-import com.example.easyshop.Entities.AbstractEntities;
+public class Product {
 
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
-
-public class Product extends AbstractEntities {
-    private static int id_inc = 0;
-
-    @PrimaryKey
-    private int id;
+    int id;
     public String title;
+    public String image;
     public String description;
     public double price;
-    public String image;
+
+    public Product(int _id, String _title, String _description, double _price,String _image) {
+        this.id = _id;
+        this.title = _title;
+        this.description = _description;
+        this.price = _price;
+        this.image = _image;
+    }
 
     public Product() {
-        new Product(0, "default", "default", 0, "");
-    }
-
-    public Product(int id, String title, String description, double price) {
-        new Product(id, title, description, price, "");
-    }
-
-    public Product(int id, String title, String description, double price, String image) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.price = price;
-        this.image = image;
     }
 
     public int getId() {
@@ -53,25 +41,27 @@ public class Product extends AbstractEntities {
 
     public void setId(int id) {
         this.id = id;
+
     }
 
     public void setTitle(String title) {
         this.title = title;
+
     }
 
     public void setDesc(String desc) {
         this.description = desc;
+
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setPrice(double prix) {
+        this.price = prix;
+
     }
 
-    public void setProductImage(String image) {
-        this.image = image;
+    public void setProductImage(String link_image) {
+        this.image = link_image;
     }
 
-    public static int getIdInc() {
-        return ++id_inc;
-    }
+
 }
