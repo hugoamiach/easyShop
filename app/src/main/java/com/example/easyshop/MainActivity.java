@@ -1,6 +1,5 @@
 package com.example.easyshop;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -70,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         //init();
         Panier = new ArrayList<>();
         ProductiListCh = new ArrayList<>();
+        ProductiListVt = new ArrayList<>();
 
         ProductiListCh.add(p1);
         ProductiListCh.add(p2);
