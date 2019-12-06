@@ -53,7 +53,7 @@
         android:layout_height = "wrap_content"
         android:onClick = "codePromo"
         android:text = "Valider Code"
-        />
+        tools:ignore="OnClick" />
 
 </LinearLayout>
 

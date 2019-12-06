@@ -23,10 +23,14 @@ public class Authentification  extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if (username.getText().toString().equals(password.getText().toString())) {
-                    Intent mainActivity = new Intent(Authentification.this, MainActivity.class);
-                    startActivity(mainActivity);
-                } else {
+                if (username.getText().toString().equalsIgnoreCase("admin") && password.getText().toString().equalsIgnoreCase("admin")) {
+                    Intent mainActivityAdmin = new Intent(Authentification.this, MainActivityAdmin.class);
+                    startActivity(mainActivityAdmin);
+                }if (!username.getText().toString().equals(password.getText().toString()) || !username.getText().toString().equals("admin")) {
+                   Intent mainActivity = new Intent(Authentification.this, MainActivity.class);
+                   startActivity(mainActivity);
+               }
+                else {
                     Toast.makeText(getApplicationContext(), "Erreur d'authentification",Toast.LENGTH_SHORT).show();
                 }
             }
