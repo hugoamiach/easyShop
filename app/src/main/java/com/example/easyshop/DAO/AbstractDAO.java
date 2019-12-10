@@ -2,13 +2,14 @@ package com.example.easyshop.DAO;
 
 import android.content.Context;
 
-import com.example.easyshop.Entities.AbstractEntities;
+import com.example.easyshop.Entities.IEntities;
 
 import java.util.List;
 
 import io.realm.Realm;
+import io.realm.RealmObject;
 
-public abstract class AbstractDAO<TEntities extends AbstractEntities> {
+public abstract class AbstractDAO<TEntities extends RealmObject> {
     private DataBase dataBase;
     private Context context;
     private Realm realm;
@@ -38,7 +39,7 @@ public abstract class AbstractDAO<TEntities extends AbstractEntities> {
         realm.beginTransaction();
         realm
                 .where(this.aClass)
-                .equalTo("id", tEntities.getId());
+                .equalTo("id", ((IEntities) tEntities).getId());
         realm.commitTransaction();
 
     }
@@ -54,6 +55,6 @@ public abstract class AbstractDAO<TEntities extends AbstractEntities> {
         TEntities realmObject = realm.createObject(aClass, getLastId() + 1);
         TEntities realmProduit = realm.copyToRealm(entities);
         realm.commitTransaction();
-        return realmObject;
+        return realmProduit;
     }
 }

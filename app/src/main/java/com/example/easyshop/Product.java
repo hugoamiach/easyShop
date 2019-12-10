@@ -1,19 +1,47 @@
 package com.example.easyshop;
 
-import com.example.easyshop.Entities.AbstractEntities;
+import com.example.easyshop.Entities.IEntities;
 
-public class Product extends AbstractEntities {
+import java.util.ArrayList;
+import java.util.List;
 
-    public String title;
-    public String image;
-    public String description;
-    public double price;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
-    public Product(String _title, String _description, double _price, String _image) {
-        this.title = _title;
-        this.description = _description;
-        this.price = _price;
-        this.image = _image;
+public class Product extends RealmObject implements IEntities {
+    private static final List<String> categories;
+    public static final String CHAUSSURE_CONST = "Chaussure";
+    public static final String VETEMENT_CONST = "Vetements";
+
+    public static List<String> getCategories() {
+        return categories;
+    }
+
+    static {
+        categories = new ArrayList<>();
+        categories.add(CHAUSSURE_CONST);
+        categories.add(VETEMENT_CONST);
+    }
+
+    private String title;
+    private String image;
+    private String description;
+    private double price;
+    private String typeProduct;
+
+    @PrimaryKey
+    private int id;
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTypeProduct() {
+        return typeProduct;
+    }
+
+    public void setTypeProduct(String typeProduct) {
+        this.typeProduct = typeProduct;
     }
 
     public double getPrice() {
@@ -24,11 +52,11 @@ public class Product extends AbstractEntities {
         return title;
     }
 
-    public String getDesc() {
+    public String getDescription() {
         return description;
     }
 
-    public String getimage() {
+    public String getImage() {
         return image;
     }
 
@@ -37,7 +65,7 @@ public class Product extends AbstractEntities {
 
     }
 
-    public void setDesc(String desc) {
+    public void setDescription(String desc) {
         this.description = desc;
 
     }
@@ -47,7 +75,12 @@ public class Product extends AbstractEntities {
 
     }
 
-    public void setProductImage(String link_image) {
+    public void setImage(String link_image) {
         this.image = link_image;
+    }
+
+    @Override
+    public int getId() {
+        return id;
     }
 }

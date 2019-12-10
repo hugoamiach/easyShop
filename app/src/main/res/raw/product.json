@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "title": "Crocs",
+    "image": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQdBkz7u0wCHbHNJaiABpSGHUWjVfwD3-ajkfwu8PFy2e6mNGE194QzZ0ArkT_r4umM3yS2eavj&usqp=CAc",
+    "description": "Crocs on fire",
+    "price": 29.99,
+    "typeProduct": "Chaussure"
+  },
+  {
+    "id": 2,
+    "title": "Timberland",
+    "image": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRKpOOAthYENJbddkT7DQMsaU3pcxqhPfWESjb2GdkMiDGl635iRoSlYS3VViC2ikz2rcjHIQK6ESeWZTqaNy-K_Ba2HUfk5B0unbr8KjCDHDqpWKZKA09wOZM&usqp=CAc",
+    "description": "Crocs on fire",
+    "price": 74.99,
+    "typeProduct": "Chaussure"
+  },
+  {
+    "id": 3,
+    "title": "Nike AFI",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQR7TP_JYFrILQeX7E1zQX86Khzimsn95BfF5bF-ubVmdMx-wZb5Q&s",
+    "description": "Crocs on fire",
+    "price": 99.99,
+    "typeProduct": "Chaussure"
+  },
+  {
+    "id": 4,
+    "title": "Adidas",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3GjEeWZqsbJUrHjzfq87d1ethBooqQ1TIgj_aWzmex9EVa3GspA&s",
+    "description": "Yeezy Boost",
+    "price": 199.99,
+    "typeProduct": "Chaussure"
+  },
+  {
+    "id": 5,
+    "title": "Adidas",
+    "image": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSy_BbJNtcBkr7ejGa8_OUONGNFl8DHa-rWiMhV-hloZO6OP6bUNvln2iojGC9RGsiqfY_oVFhnvP6rbZwWs3S-d4XBZKikPnt4oTNBb-pHoFTXUkJw6knvSg&usqp=CAc",
+    "description": "Maillot Juventus",
+    "price": 99.99,
+    "typeProduct": "Vetements"
+  },
+  {
+    "id": 6,
+    "title": "Nasa",
+    "image": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQk1D8qTVZOSICIFxqt3YWbUDDzQY_I_iqiguDIqFqFCc4gWvoLiwv70Zd6379A_FhoogEzO2uJ3Sf_h0EX11IyU-5WkbPM0Vw9Qvh74SQ&usqp=CAc",
+    "description": "Pull Nasa",
+    "price": 64.99,
+    "typeProduct": "Vetements"
+  },
+  {
+    "id": 7,
+    "title": "Levis",
+    "image": "https://www.street-online.com/Files/17303/Img/21/jean-levis-femme-721-taille-haute-skinny-to-the-nine-188820188-zoom-zoom.jpg",
+    "description": "Jean Levis",
+    "price": 100.00,
+    "typeProduct": "Vetements"
+  },
+  {
+    "id": 8,
+    "title": "Hollister",
+    "image": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcR9ESNt81wDyTwPqNtLaJB1BAsSjlJePa3rRD28MzJadrdBr4QVWJxYahM_StfT9bGrcV9mjIX78TP8V6ctXcwz_nYAigB161vNHhMWO_zC1TDd9sfQ0DqJJw&usqp=CAc",
+    "description": "T-shirt Hollister",
+    "price": 29.99,
+    "typeProduct": "Vetements"
+  }
+]

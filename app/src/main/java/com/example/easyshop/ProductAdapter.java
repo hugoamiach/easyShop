@@ -55,13 +55,13 @@ public class ProductAdapter extends BaseAdapter {
 
         Product curProduct = mProductList.get(position);
 
-        item.title.setText(curProduct.title);
-        item.price.setText("Price " + curProduct.price);
-        item.description.setText(curProduct.description);
+        item.title.setText(curProduct.getTitle());
+        item.price.setText("Price " + curProduct.getPrice());
+        item.description.setText(curProduct.getDescription());
 
-        if (!curProduct.image.equals("")) {
+        if (!curProduct.getImage().equals("")) {
             AQuery aq = new AQuery(item.image);
-            aq.id(item.image).image(curProduct.image);
+            aq.id(item.image).image(curProduct.getImage());
         } else {
             item.image.setImageResource(R.drawable.ic_launcher_background);
         }
