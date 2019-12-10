@@ -1,6 +1,9 @@
 package com.example.easyshop;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,18 +13,21 @@ import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.List;
-
-import androidx.appcompat.app.AppCompatActivity;
+import java.util.Objects;
 
 import io.realm.Realm;
-import io.realm.RealmConfiguration;
 
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String CHANNEL_ID = "1111";
+    private static final int NOTIFICATION_ID = 1;
     private ArrayList<Product> ProductiListCh;
     private ProductAdapter mProductAdapterCh;
     private ArrayList<Product> ProductiListVt;
@@ -31,7 +37,31 @@ public class MainActivity extends AppCompatActivity {
     private Button mButton;
     private Realm realm;
 
+    private void createNotificationChannel() {
+        // Créer le NotificationChannel, seulement pour API 26+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "Notification channel name";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription("Notification channel description");
+            // Enregister le canal sur le système : attention de ne plus rien modifier après
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            Objects.requireNonNull(notificationManager).createNotificationChannel(channel);
+        }
+    }
+
+
+
     public void pay(View view) {
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        NotificationCompat.Builder notifBuilder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_launcher_foreground)
+                .setContentTitle("Votre panier est prêt")
+                .setContentText("Voici le montant qu'il vous reste à regler ".concat(calculerMontantPanier().concat("€")))
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+        // notificationId est un identificateur unique par notification qu'il vous faut définir
+        notificationManager.notify(NOTIFICATION_ID, notifBuilder.build());
         Intent intent = new Intent(this, Pay.class);
         intent.putExtra("panier", calculerMontantPanier());
         startActivity(intent);

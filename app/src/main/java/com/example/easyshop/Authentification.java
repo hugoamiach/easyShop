@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,13 +25,11 @@ public class Authentification  extends AppCompatActivity {
                 if (username.getText().toString().equalsIgnoreCase("admin") && password.getText().toString().equalsIgnoreCase("admin")) {
                     Intent mainActivityAdmin = new Intent(Authentification.this, MainActivityAdmin.class);
                     startActivity(mainActivityAdmin);
-                }if (!username.getText().toString().equals(password.getText().toString()) || !username.getText().toString().equals("admin")) {
+                }if (!username.getText().toString().equals(password.getText().toString()) || !username.getText().toString().equalsIgnoreCase("admin")) {
                    Intent mainActivity = new Intent(Authentification.this, MainActivity.class);
                    startActivity(mainActivity);
                }
-                else {
-                    Toast.makeText(getApplicationContext(), "Erreur d'authentification",Toast.LENGTH_SHORT).show();
-                }
+
             }
         });
     }
