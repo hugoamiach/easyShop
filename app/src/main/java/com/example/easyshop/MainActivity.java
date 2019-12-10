@@ -1,9 +1,6 @@
 package com.example.easyshop;
 
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,7 +16,6 @@ import androidx.core.app.NotificationManagerCompat;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Objects;
 
 import io.realm.Realm;
 
@@ -36,21 +32,6 @@ public class MainActivity extends AppCompatActivity {
     private ProductAdapter mProductAdapterPa;
     private Button mButton;
     private Realm realm;
-
-    private void createNotificationChannel() {
-        // Créer le NotificationChannel, seulement pour API 26+
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "Notification channel name";
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
-            channel.setDescription("Notification channel description");
-            // Enregister le canal sur le système : attention de ne plus rien modifier après
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            Objects.requireNonNull(notificationManager).createNotificationChannel(channel);
-        }
-    }
-
-
 
     public void pay(View view) {
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
