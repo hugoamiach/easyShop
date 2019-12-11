@@ -6,5 +6,7 @@ import io.realm.annotations.PrimaryKey;
 
 public interface IEntities {
     int getId();
+
+    void setId(int id);
 }
 

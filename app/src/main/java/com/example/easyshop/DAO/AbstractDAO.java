@@ -4,12 +4,14 @@ import android.content.Context;
 
 import com.example.easyshop.Entities.IEntities;
 
+import java.lang.reflect.Field;
 import java.util.List;
+import java.util.Map;
 
 import io.realm.Realm;
 import io.realm.RealmObject;
 
-public abstract class AbstractDAO<TEntities extends RealmObject> {
+public abstract class AbstractDAO<TEntities extends RealmObject & IEntities> {
     private DataBase dataBase;
     private Context context;
     private Realm realm;
@@ -37,11 +39,8 @@ public abstract class AbstractDAO<TEntities extends RealmObject> {
 
     public void delete(TEntities tEntities) {
         realm.beginTransaction();
-        realm
-                .where(this.aClass)
-                .equalTo("id", ((IEntities) tEntities).getId());
+        tEntities.deleteFromRealm();
         realm.commitTransaction();
-
     }
 
     public void deleteAll(List<TEntities> liste) {
@@ -50,11 +49,28 @@ public abstract class AbstractDAO<TEntities extends RealmObject> {
         }
     }
 
-    public TEntities create(TEntities entities) {
+    public TEntities update(TEntities tEntities) {
+
+        if (tEntities.isLoaded()) {
+            realm.beginTransaction();
+            tEntities = realm.copyToRealmOrUpdate(tEntities);
+            realm.commitTransaction();
+        }
+
+        return tEntities;
+    }
+
+    public Realm getRealm() {
+        return realm;
+    }
+
+    public TEntities create() {
+        int id = getLastId() + 1;
         realm.beginTransaction();
-        TEntities realmObject = realm.createObject(aClass, getLastId() + 1);
-        TEntities realmProduit = realm.copyToRealm(entities);
+        TEntities realmObject = realm.createObject(aClass, id);
+        TEntities tEntities = realm.copyToRealm(realmObject);
+
         realm.commitTransaction();
-        return realmProduit;
+        return tEntities;
     }
 }

@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
     private List<Product> Panier = new ArrayList<>();
     private ProductAdapter mProductAdapterPa;
     private Button mButton;
-    private Realm realm;
 
     public void pay(View view) {
         Intent intent = new Intent(this, Pay.class);
@@ -55,17 +54,32 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ProductDAO productDAO = new ProductDAO(this);
+        Product productCreate = productDAO.create();
+
+        productDAO.getRealm().beginTransaction();
+        productCreate.setImage("https://fashion-day.fr/3444-large/manteau-hiver-pas-cher-femme-noir-et-fourrure-noire.jpg");
+        productCreate.setDescription("Manteau femme");
+        productCreate.setTitle("Manteau");
+        productCreate.setTypeProduct(Product.VETEMENT_CONST);
+        productDAO.getRealm().commitTransaction();
+
+        productDAO.update(productCreate);
+
+
+        //productDAO.delete(productCreate);
+
         List<Product> products = productDAO.getAll();
 
-        List<Product> list = new ArrayList<>();
         productiListCh = new ArrayList<>();
         productiListVt = new ArrayList<>();
         for (Product e : products) {
-            if (e.getTypeProduct().equals(Product.CHAUSSURE_CONST))
-                productiListCh.add(e);
+            if (e.getTypeProduct() != null) {
+                if (e.getTypeProduct().equals(Product.CHAUSSURE_CONST))
+                    productiListCh.add(e);
 
-            if (e.getTypeProduct().equals(Product.VETEMENT_CONST))
-                productiListVt.add(e);
+                if (e.getTypeProduct().equals(Product.VETEMENT_CONST))
+                    productiListVt.add(e);
+            }
         }
 
 
