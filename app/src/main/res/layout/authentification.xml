@@ -12,10 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:padding="16dp"
         android:clipToPadding="false"
         android:columnCount="1"
-        >
+        android:padding="16dp">
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -43,28 +42,18 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-    </GridLayout>
-
-
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:padding="16dp"
-        android:clipToPadding="false"
-        android:columnCount="2"
-        >
         <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonlogin"
-            android:layout_width="match_parent"
+            android:layout_width="218dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="21dp"
             android:onClick="main"
             android:text="@string/connexion"
+            android:textAlignment="center"
             android:visibility="visible" />
 
     </GridLayout>
-
-
 
 
 </LinearLayout>

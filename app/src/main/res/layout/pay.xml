@@ -6,55 +6,96 @@
     android:orientation="vertical"
     tools:context=".Pay">
 
-    <TextView
-        android:id="@+id/panier"
-        android:layout_width="wrap_content"
+    <GridLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textColor="#0000FF"
-        android:textSize="17dp" />
+        android:clipToPadding="false"
+        android:columnCount="1"
+        android:padding="16dp">
 
-    <EditText
-        android:id="@+id/nom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nom du titulaire" />
+        <TextView
+            android:id="@+id/panier"
+            android:layout_width="wrap_content" />
 
-    <EditText
-        android:id="@+id/numeroCarte"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:digits="01234 56789"
-        android:hint="Numéro de carte"
-        android:maxLength="16" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nom du titulaire">
 
-    <EditText
-        android:id="@+id/date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Date d'expiration" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/titulaire"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/cryptogramme"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:digits="0123456789+"
-        android:hint="Cryptogramme"
-        android:maxLength="3" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/codePromo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Code Promo" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Numéro de carte">
 
-    <Button
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/carte"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Date d'expiration">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/Date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Cryptogramme">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/Cryptogramme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:hint="Code Promo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/codePromo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </GridLayout>
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonCodePromo"
-        android:layout_width="wrap_content"
+        android:layout_width="218dp"
+        android:layout_gravity="right"
+        android:layout_marginTop="21dp"
         android:layout_height="wrap_content"
+        android:textAlignment="center"
         android:onClick="codePromo"
         android:text="Valider Code"
-        tools:ignore="OnClick" />
+        tools:ignore="OnClick"
+        android:visibility="visible"
+        />
 
 </LinearLayout>
 
