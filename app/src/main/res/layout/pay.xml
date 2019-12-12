@@ -5,29 +5,30 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Pay">
+
     <TextView
+        android:id="@+id/panier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/panier"
-        android:textColor="#0000FF"
-        android:textSize="17dp"
         android:layout_gravity="center"
-        />
-        <EditText
-            android:id="@+id/nom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Nom du titulaire" />
+        android:textColor="#0000FF"
+        android:textSize="17dp" />
 
-        <EditText
-            android:id="@+id/numeroCarte"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:digits="01234 56789"
-            android:maxLength="16"
-            android:hint="Numéro de carte" />
+    <EditText
+        android:id="@+id/nom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nom du titulaire" />
 
-        <EditText
+    <EditText
+        android:id="@+id/numeroCarte"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:digits="01234 56789"
+        android:hint="Numéro de carte"
+        android:maxLength="16" />
+
+    <EditText
         android:id="@+id/date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,8 +39,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:digits="0123456789+"
-        android:maxLength="3"
-        android:hint="Cryptogramme" />
+        android:hint="Cryptogramme"
+        android:maxLength="3" />
 
     <EditText
         android:id="@+id/codePromo"
@@ -48,11 +49,11 @@
         android:hint="Code Promo" />
 
     <Button
-        android:id = "@+id/buttonCodePromo"
-        android:layout_width = "wrap_content"
-        android:layout_height = "wrap_content"
-        android:onClick = "codePromo"
-        android:text = "Valider Code"
+        android:id="@+id/buttonCodePromo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="codePromo"
+        android:text="Valider Code"
         tools:ignore="OnClick" />
 
 </LinearLayout>
