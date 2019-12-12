@@ -31,14 +31,15 @@ public class Pay extends AppCompatActivity {
             public void onClick(View v) {
                 if (codePromo.getText().toString().equals("HOUHOU2019") && code[0]) {
                     Toast.makeText(getApplicationContext(), "Code promo deja utilise", Toast.LENGTH_SHORT).show();
-                }if (codePromo.getText().toString().equals("HOUHOU2019") && !code[0]) {
+                }
+                if (codePromo.getText().toString().equals("HOUHOU2019") && !code[0]) {
                     Toast.makeText(getApplicationContext(), "Code Promo Valide", Toast.LENGTH_SHORT).show();
                     code[0] = true;
                     double value = Double.parseDouble(str);
                     value = value * 0.9;
                     DecimalFormat df = new DecimalFormat("0.00");
                     textView.setText("Montant du panier ".concat(df.format(value)).concat("€"));
-                }else {
+                } else {
                     Toast.makeText(getApplicationContext(), "Code promo errone", Toast.LENGTH_SHORT).show();
                 }
             }

@@ -9,6 +9,11 @@ import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.example.easyshop.DAO.PanierDAO;
+import com.example.easyshop.DAO.ProductDAO;
+import com.example.easyshop.Entities.Panier;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
@@ -33,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private ProductAdapter mProductAdapterVt;
     private Panier Panier;
     private ProductAdapter mProductAdapterPa;
-    private Button mButton;
+    private MaterialButton mButton;
     private PanierDAO panierDAO;
 
     public void pay(View view) {
@@ -139,8 +144,8 @@ public class MainActivity extends AppCompatActivity {
         final ListView listViewCatalogPa = findViewById(R.id.listview2);
         mProductAdapterPa = new ProductAdapter(Panier.getProducts(), getLayoutInflater());
         listViewCatalogPa.setAdapter(mProductAdapterPa);
-        listViewCatalogPa.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
+        listViewCatalogPa.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(MainActivity.this, Panier.getProducts().get(i).getTitle() + " Suppression du panier", Toast.LENGTH_SHORT).show();
