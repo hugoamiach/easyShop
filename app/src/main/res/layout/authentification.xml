@@ -16,10 +16,14 @@
 
     <EditText
         android:id="@+id/login"
+        style="@style/Widget.AppCompat.EditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autofillHints=""
-        android:inputType="textShortMessage" />
+        android:hint="@string/utilisateur"
+        android:inputType="textShortMessage"
+        android:selectAllOnFocus="true"
+        android:singleLine="true" />
 
     <TextView
         android:id="@+id/textView2"
@@ -33,6 +37,7 @@
         android:layout_height="wrap_content"
         android:accessibilityLiveRegion="none"
         android:autofillHints=""
+        android:hint="@string/mot_de_passe"
         android:inputType="textPassword" />
 
     <Button

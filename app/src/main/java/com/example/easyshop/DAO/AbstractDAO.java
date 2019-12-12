@@ -4,9 +4,7 @@ import android.content.Context;
 
 import com.example.easyshop.Entities.IEntities;
 
-import java.lang.reflect.Field;
 import java.util.List;
-import java.util.Map;
 
 import io.realm.Realm;
 import io.realm.RealmObject;
@@ -33,7 +31,8 @@ public abstract class AbstractDAO<TEntities extends RealmObject & IEntities> {
     }
 
     public int getLastId() {
-        return realm.where(aClass).max("id").intValue();
+        Number s = realm.where(aClass).max("id");
+        return s == null ? 0 : s.intValue();
     }
 
 
@@ -58,6 +57,10 @@ public abstract class AbstractDAO<TEntities extends RealmObject & IEntities> {
         }
 
         return tEntities;
+    }
+
+    public TEntities getFindFirst() {
+        return realm.where(aClass).findFirst();
     }
 
     public Realm getRealm() {
