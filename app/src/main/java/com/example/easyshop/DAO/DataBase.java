@@ -7,8 +7,6 @@ import com.example.easyshop.R;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
@@ -47,10 +45,11 @@ public class DataBase {
     }
 
     private void init(Context context) {
+
         Realm.init(context);
         RealmConfiguration config = new RealmConfiguration.Builder().deleteRealmIfMigrationNeeded().name(baseName).build();
         Realm.setDefaultConfiguration(config);
         realm = Realm.getDefaultInstance();
-        populateBDD(context);
+        //populateBDD(context);
     }
 }

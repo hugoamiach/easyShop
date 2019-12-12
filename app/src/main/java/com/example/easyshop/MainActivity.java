@@ -10,16 +10,17 @@ import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.easyshop.DAO.PanierDAO;
 import com.example.easyshop.DAO.ProductDAO;
+import com.example.easyshop.Entities.Panier;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-
-import io.realm.Realm;
-
 
 public class MainActivity extends AppCompatActivity {
     private List<Product> productiListCh;
@@ -30,9 +31,10 @@ public class MainActivity extends AppCompatActivity {
     private ProductAdapter mProductAdapterCh;
     private List<Product> productiListVt;
     private ProductAdapter mProductAdapterVt;
-    private List<Product> Panier = new ArrayList<>();
+    private Panier Panier;
     private ProductAdapter mProductAdapterPa;
     private Button mButton;
+    private PanierDAO panierDAO;
 
     public void pay(View view) {
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
@@ -56,17 +58,25 @@ public class MainActivity extends AppCompatActivity {
 
     public double calculPanier() {
         double res = 0;
-        for (int i = 0; i < Panier.size(); i++) {
-            res += Panier.get(i).getPrice();
+        for (Product product : Panier.getProducts()) {
+            res += product.getPrice();
         }
         return res;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        panierDAO = new PanierDAO(this);
+        this.Panier = panierDAO.getFindFirst();
+
+        if (Panier == null) {
+            Panier = panierDAO.create();
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ProductDAO productDAO = new ProductDAO(this);
+
         Product productCreate = productDAO.create();
 
         productDAO.getRealm().beginTransaction();
@@ -111,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(MainActivity.this, productiListCh.get(i).getTitle() + " ajouté au panier", Toast.LENGTH_SHORT).show();
                 mProductAdapterPa.notifyDataSetChanged();
-                Panier.add(productiListCh.get(i));
+                Panier.addProduct(panierDAO, productiListCh.get(i));
                 calculerMontantPanier();
                 total.setText("Montant du panier : " + calculerMontantPanier() + "€");
             }
@@ -129,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(MainActivity.this, productiListVt.get(i).getTitle() + " ajouté au panier", Toast.LENGTH_SHORT).show();
                 mProductAdapterPa.notifyDataSetChanged();
-                Panier.add(productiListVt.get(i));
+                Panier.addProduct(panierDAO, productiListVt.get(i));
                 calculerMontantPanier();
                 total.setText("Montant du panier : " + calculerMontantPanier() + "€");
             }
@@ -139,15 +149,17 @@ public class MainActivity extends AppCompatActivity {
         tabs.addTab(spec);
         spec = tabs.newTabSpec("tag3");
         final ListView listViewCatalogPa = findViewById(R.id.listview2);
-        mProductAdapterPa = new ProductAdapter(Panier, getLayoutInflater());
+        mProductAdapterPa = new ProductAdapter(Panier.getProducts(), getLayoutInflater());
         listViewCatalogPa.setAdapter(mProductAdapterPa);
         listViewCatalogPa.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(MainActivity.this, Panier.get(i).getTitle() + " Suppression du panier", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, Panier.getProducts().get(i).getTitle() + " Suppression du panier", Toast.LENGTH_SHORT).show();
                 mProductAdapterPa.notifyDataSetChanged();
-                Panier.remove(i);
+                Panier.getRealm().beginTransaction();
+                Panier.getProducts().remove(i);
+                Panier.getRealm().commitTransaction();
                 calculerMontantPanier();
                 total.setText("Montant du panier : " + calculerMontantPanier() + "€");
             }
@@ -160,7 +172,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(MainActivity.this, "Le panier est vide", Toast.LENGTH_SHORT).show();
-                Panier.clear();
+                Panier.getRealm().beginTransaction();
+                Panier.getProducts().clear();
+                Panier.getRealm().commitTransaction();
                 mProductAdapterPa.notifyDataSetChanged();
                 calculerMontantPanier();
                 total.setText("Montant du panier : " + calculerMontantPanier() + "€");
