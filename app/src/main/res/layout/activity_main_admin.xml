@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TabHost android:id="@+id/tabhost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <TabWidget android:id="@android:id/tabs"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+            <FrameLayout android:id="@android:id/tabcontent"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+                <RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"  android:id="@+id/container" android:layout_width="match_parent" android:layout_height="match_parent" tools:context="com.example.easyshop.MainActivityAdmin" tools:ignore="MergeRootFrame" >
+
+                    <ListView android:id="@+id/listviewAdmin" android:layout_width="match_parent" android:layout_height="match_parent" >
+                    </ListView>
+
+
+
+                </RelativeLayout>
+                <RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"  android:id="@+id/container1" android:layout_width="match_parent" android:layout_height="match_parent" tools:context="com.example.easyshop.MainActivityAdmin" tools:ignore="MergeRootFrame" >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/editText"
+                        android:orientation="vertical">
+                    <EditText
+                        android:id="@+id/nomProd"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Nom du Produit" />
+
+                    <EditText
+                        android:id="@+id/descProd"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Description du Produit" />
+
+
+                    <EditText
+                        android:id="@+id/prix"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Prix" />
+
+                    <EditText
+                        android:id="@+id/url"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Url de l'image" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
+</LinearLayout>
+
