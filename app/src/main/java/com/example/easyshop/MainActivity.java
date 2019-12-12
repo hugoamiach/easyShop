@@ -77,18 +77,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ProductDAO productDAO = new ProductDAO(this);
 
-        Product productCreate = productDAO.create();
-
-        productDAO.getRealm().beginTransaction();
-        productCreate.setImage("https://fashion-day.fr/3444-large/manteau-hiver-pas-cher-femme-noir-et-fourrure-noire.jpg");
-        productCreate.setDescription("Manteau femme");
-        productCreate.setTitle("Manteau");
-        productCreate.setTypeProduct(Product.VETEMENT_CONST);
-        productDAO.getRealm().commitTransaction();
-
-        productDAO.update(productCreate);
-
-
         //productDAO.delete(productCreate);
 
         List<Product> products = productDAO.getAll();
