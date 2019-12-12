@@ -53,9 +53,9 @@ public class MainActivityAdmin extends AppCompatActivity {
                 productDAO.update(productCreate);
 
             }
-            });
+        });
 
-                TabHost tabs = findViewById(R.id.tabhost);
+        TabHost tabs = findViewById(R.id.tabhost);
         tabs.setup();
         TabSpec spec = tabs.newTabSpec("tag1");
         final ListView listViewCatalog = findViewById(R.id.listviewAdmin);
