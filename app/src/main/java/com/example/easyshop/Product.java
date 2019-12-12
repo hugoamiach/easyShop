@@ -10,7 +10,7 @@ import io.realm.annotations.PrimaryKey;
 
 public class Product extends RealmObject implements IEntities {
     private static final List<String> categories;
-    public static final String CHAUSSURE_CONST = "Chaussure";
+    public static final String CHAUSSURE_CONST = "Chaussures";
     public static final String VETEMENT_CONST = "Vetements";
 
     public static List<String> getCategories() {

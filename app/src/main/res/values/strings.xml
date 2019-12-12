@@ -7,4 +7,10 @@
     <string name="connexion">Connexion</string>
     <string name="utilisateur">Utilisateur</string>
     <string name="mot_de_passe">Mot de passe</string>
+
+    <string-array name="Categories">
+        <item>Chaussures</item>
+        <item>Vetements</item>
+    </string-array>
+
 </resources>

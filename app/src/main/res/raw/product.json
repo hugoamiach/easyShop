@@ -5,7 +5,7 @@
     "image": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQdBkz7u0wCHbHNJaiABpSGHUWjVfwD3-ajkfwu8PFy2e6mNGE194QzZ0ArkT_r4umM3yS2eavj&usqp=CAc",
     "description": "Crocs on fire",
     "price": 29.99,
-    "typeProduct": "Chaussure"
+    "typeProduct": "Chaussures"
   },
   {
     "id": 2,
@@ -13,7 +13,7 @@
     "image": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRKpOOAthYENJbddkT7DQMsaU3pcxqhPfWESjb2GdkMiDGl635iRoSlYS3VViC2ikz2rcjHIQK6ESeWZTqaNy-K_Ba2HUfk5B0unbr8KjCDHDqpWKZKA09wOZM&usqp=CAc",
     "description": "Crocs on fire",
     "price": 74.99,
-    "typeProduct": "Chaussure"
+    "typeProduct": "Chaussures"
   },
   {
     "id": 3,
@@ -21,7 +21,7 @@
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQR7TP_JYFrILQeX7E1zQX86Khzimsn95BfF5bF-ubVmdMx-wZb5Q&s",
     "description": "Crocs on fire",
     "price": 99.99,
-    "typeProduct": "Chaussure"
+    "typeProduct": "Chaussures"
   },
   {
     "id": 4,
@@ -29,7 +29,7 @@
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3GjEeWZqsbJUrHjzfq87d1ethBooqQ1TIgj_aWzmex9EVa3GspA&s",
     "description": "Yeezy Boost",
     "price": 199.99,
-    "typeProduct": "Chaussure"
+    "typeProduct": "Chaussures"
   },
   {
     "id": 5,

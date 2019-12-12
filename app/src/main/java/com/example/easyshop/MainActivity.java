@@ -10,15 +10,15 @@ import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.easyshop.DAO.ProductDAO;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+
+import com.example.easyshop.DAO.ProductDAO;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-
-import io.realm.Realm;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -66,21 +66,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ProductDAO productDAO = new ProductDAO(this);
-        Product productCreate = productDAO.create();
-
-        productDAO.getRealm().beginTransaction();
-        productCreate.setImage("https://fashion-day.fr/3444-large/manteau-hiver-pas-cher-femme-noir-et-fourrure-noire.jpg");
-        productCreate.setDescription("Manteau femme");
-        productCreate.setTitle("Manteau");
-        productCreate.setTypeProduct(Product.VETEMENT_CONST);
-        productDAO.getRealm().commitTransaction();
-
-        productDAO.update(productCreate);
-
-
-        //productDAO.delete(productCreate);
-
+       ProductDAO productDAO = new ProductDAO(this);
+       //productDAO.delete(productCreate);
         List<Product> products = productDAO.getAll();
 
         productiListCh = new ArrayList<>();
