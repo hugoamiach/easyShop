@@ -50,7 +50,6 @@ public class DataBase {
         RealmConfiguration config = new RealmConfiguration.Builder().deleteRealmIfMigrationNeeded().name(baseName).build();
         Realm.setDefaultConfiguration(config);
         realm = Realm.getDefaultInstance();
-
        // populateBDD(context);
     }
 }
