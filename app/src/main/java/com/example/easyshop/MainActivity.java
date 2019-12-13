@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
         NotificationCompat.Builder notifBuilder = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_launcher_foreground)
-                .setContentTitle("Votre panier est prêt")
+                .setContentTitle("Votre panier de ".concat(calculerMontantPanier()).concat("€ est prêt"))
                 .setContentText("N'oublier d'utiliser le code Promo HOUHOU2019")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
