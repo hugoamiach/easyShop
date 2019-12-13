@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         NotificationCompat.Builder notifBuilder = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_launcher_foreground)
                 .setContentTitle("Votre panier est prêt")
-                .setContentText("Voici le montant qu'il vous reste à regler ".concat(calculerMontantPanier().concat("€")))
+                .setContentText("N'oublier d'utiliser le code Promo HOUHOU2019")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
         // notificationId est un identificateur unique par notification qu'il vous faut définir

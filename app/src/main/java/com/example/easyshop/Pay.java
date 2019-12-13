@@ -1,5 +1,6 @@
 package com.example.easyshop;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.text.DecimalFormat;
 
 public class Pay extends AppCompatActivity {
+
+    public void PayValid(View view) {
+
+        Intent PayValid = new Intent(this, PayValid.class);
+        startActivity(PayValid);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

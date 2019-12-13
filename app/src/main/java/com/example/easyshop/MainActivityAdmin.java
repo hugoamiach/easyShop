@@ -1,9 +1,9 @@
 package com.example.easyshop;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -22,6 +22,34 @@ public class MainActivityAdmin extends AppCompatActivity {
     private List<Product> productiList;
     private ProductAdapter mProductAdapter;
 
+
+    public void Validate(View view) {
+        final ProductDAO productDAO = new ProductDAO(this);
+        final EditText nomProd = findViewById(R.id.nomProd);
+        final EditText descProd = findViewById(R.id.descProd);
+        final EditText prix = findViewById(R.id.prix);
+        final EditText url = findViewById(R.id.url);
+        final Spinner Cat = findViewById(R.id.Categories);
+
+        Product productCreate = productDAO.create();
+        productDAO.getRealm().beginTransaction();
+        productCreate.setImage(url.getText().toString());
+        productCreate.setDescription(descProd.getText().toString());
+        productCreate.setTitle(nomProd.getText().toString());
+        double value = Double.parseDouble(prix.getText().toString());
+        productCreate.setPrice(value);
+        productCreate.setTypeProduct(Cat.getSelectedItem().toString());
+        productDAO.getRealm().commitTransaction();
+        productDAO.update(productCreate);
+
+        Intent Product = new Intent(this, ProductAdded.class);
+        startActivity(Product);
+
+
+
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,33 +57,7 @@ public class MainActivityAdmin extends AppCompatActivity {
         final ProductDAO productDAO = new ProductDAO(this);
         productiList = productDAO.getAll();
 
-        final EditText nomProd = findViewById(R.id.nomProd);
-        final EditText descProd = findViewById(R.id.descProd);
-        final EditText prix = findViewById(R.id.prix);
-        final EditText url = findViewById(R.id.url);
-        final Spinner Cat = findViewById(R.id.Categories);
-        Button b1 = findViewById(R.id.buttonValid);
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Product productCreate = productDAO.create();
-
-                productDAO.getRealm().beginTransaction();
-                productCreate.setImage(url.getText().toString());
-                productCreate.setDescription(descProd.getText().toString());
-                productCreate.setTitle(nomProd.getText().toString());
-                double value = Double.parseDouble(prix.getText().toString());
-                productCreate.setPrice(value);
-                productCreate.setTypeProduct(Cat.getSelectedItem().toString());
-                productDAO.getRealm().commitTransaction();
-
-                productDAO.update(productCreate);
-
-            }
-            });
-
-                TabHost tabs = findViewById(R.id.tabhost);
+        TabHost tabs = findViewById(R.id.tabhost);
         tabs.setup();
         TabSpec spec = tabs.newTabSpec("tag1");
         final ListView listViewCatalog = findViewById(R.id.listviewAdmin);

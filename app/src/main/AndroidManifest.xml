@@ -4,7 +4,7 @@
     <uses-sdk android:targetSdkVersion="19" />
     <uses-permission android:name="android.permission.INTERNET"/>
 
-    <application android:allowBackup="true" android:icon="@drawable/ic_launcher_background" android:label="@string/app_name" android:theme="@style/AppTheme" >
+    <application android:allowBackup="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:theme="@style/AppTheme" >
         <activity android:name="com.example.easyshop.Authentification" android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,6 +18,10 @@
         <activity android:name="com.example.easyshop.MainActivityAdmin" android:label="MainActivity" android:parentActivityName=".MainActivity">
         </activity>
         <activity android:name="com.example.easyshop.Pay" android:label="Pay" android:parentActivityName=".MainActivity">
+        </activity>
+        <activity android:name="com.example.easyshop.PayValid" android:label="PayValid" android:parentActivityName=".MainActivity">
+        </activity>
+        <activity android:name="com.example.easyshop.ProductAdded" android:label="ProductAdded" android:parentActivityName=".MainActivity">
         </activity>
 
     </application>

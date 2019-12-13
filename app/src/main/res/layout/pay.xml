@@ -23,7 +23,7 @@
             android:id="@+id/numeroCarte"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:digits="01234 56789"
+            android:digits="0123456789"
             android:maxLength="16"
             android:hint="Numéro de carte" />
 
@@ -54,6 +54,14 @@
         android:onClick = "codePromo"
         android:text = "Valider Code"
         tools:ignore="OnClick" />
+
+    <Button
+        android:id = "@+id/buttonPay"
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:onClick = "PayValid"
+        android:text = "Payer"
+        tools:ignore="OnClick"/>
 
 </LinearLayout>
 
