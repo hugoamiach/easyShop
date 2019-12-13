@@ -46,8 +46,6 @@ public class MainActivityAdmin extends AppCompatActivity {
         startActivity(Product);
 
 
-
-
     }
 
     @Override
@@ -56,6 +54,9 @@ public class MainActivityAdmin extends AppCompatActivity {
         setContentView(R.layout.activity_main_admin);
         final ProductDAO productDAO = new ProductDAO(this);
         productiList = productDAO.getAll();
+
+
+
 
         TabHost tabs = findViewById(R.id.tabhost);
         tabs.setup();

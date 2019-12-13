@@ -6,74 +6,127 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TabHost android:id="@+id/tabhost"
+    <TabHost
+        android:id="@+id/tabhost"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
-            <TabWidget android:id="@android:id/tabs"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <TabWidget
+                android:id="@android:id/tabs"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content" />
-            <FrameLayout android:id="@android:id/tabcontent"
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
-                <RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"  android:id="@+id/container" android:layout_width="match_parent" android:layout_height="match_parent" tools:context="com.example.easyshop.MainActivityAdmin" tools:ignore="MergeRootFrame" >
 
-                    <ListView android:id="@+id/listviewAdmin" android:layout_width="match_parent" android:layout_height="match_parent" >
-                    </ListView>
+                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:id="@+id/container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:context="com.example.easyshop.MainActivityAdmin"
+                    tools:ignore="MergeRootFrame">
 
+                    <ListView
+                        android:id="@+id/listviewAdmin"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"></ListView>
 
 
                 </RelativeLayout>
-                <RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"  android:id="@+id/container1" android:layout_width="match_parent" android:layout_height="match_parent" tools:context="com.example.easyshop.MainActivityAdmin" tools:ignore="MergeRootFrame" >
+
+                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:id="@+id/container1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:context="com.example.easyshop.MainActivityAdmin"
+                    tools:ignore="MergeRootFrame">
+
+
                     <LinearLayout
+                        android:id="@+id/editText"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/editText"
                         android:orientation="vertical">
-                    <EditText
-                        android:id="@+id/nomProd"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Nom du Produit" />
 
-                    <EditText
-                        android:id="@+id/descProd"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Description du Produit" />
+                        <GridLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clipToPadding="false"
+                            android:columnCount="1"
+                            android:padding="16dp">
+
+                        </GridLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Nom du Produit">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/nomProd"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Description du Produit">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/descProd"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
 
-                    <EditText
-                        android:id="@+id/prix"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:digits="0123456789."
-                        android:hint="Prix" />
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Prix">
 
-                    <EditText
-                        android:id="@+id/url"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Url de l'image" />
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/prix"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Url de l'image">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/url"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
                         <Spinner
                             android:id="@+id/Categories"
-                            android:textAlignment="center"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:entries="@array/Categories"
-                            />
+                            android:textAlignment="center" />
 
 
                         <Button
-                            android:layout_width = "wrap_content"
-                            android:layout_height = "wrap_content"
-                            android:onClick = "Validate"
-                            android:text = "Valider"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="Validate"
+                            android:text="Valider"
                             tools:ignore="OnClick" />
 
                     </LinearLayout>
@@ -81,5 +134,9 @@
             </FrameLayout>
         </LinearLayout>
     </TabHost>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></FrameLayout>
 </LinearLayout>
 

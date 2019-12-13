@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,46 +8,52 @@
     android:orientation="vertical"
     tools:context=".Authentification">
 
-
-    <TextView
-        android:id="@+id/textView"
+    <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/utilisateur" />
+        android:layout_gravity="center"
+        android:clipToPadding="false"
+        android:columnCount="1"
+        android:padding="16dp">
 
-    <EditText
-        android:id="@+id/login"
-        style="@style/Widget.AppCompat.EditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:hint="@string/utilisateur"
-        android:inputType="textShortMessage"
-        android:selectAllOnFocus="true"
-        android:singleLine="true" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/utilisateur">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/mot_de_passe" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:accessibilityLiveRegion="none"
-        android:autofillHints=""
-        android:hint="@string/mot_de_passe"
-        android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/buttonlogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="main"
-        android:text="@string/connexion"
-        android:visibility="visible" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/mot_de_passe">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonlogin"
+            android:layout_width="218dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="21dp"
+            android:onClick="main"
+            android:text="@string/connexion"
+            android:textAlignment="center"
+            android:visibility="visible" />
+
+    </GridLayout>
 
 
 </LinearLayout>
