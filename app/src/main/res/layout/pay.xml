@@ -34,15 +34,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:digits="0123456789"
-            android:maxLength="16"
-            android:hint="Numéro de carte" />
-
+            android:hint="Numéro de carte"
+            android:maxLength="16">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/carte"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -71,9 +70,9 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:hint="Code Promo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:hint="Code Promo">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/codePromo"
@@ -85,26 +84,37 @@
 
     </GridLayout>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/buttonCodePromo"
-        android:layout_width="218dp"
-        android:layout_gravity="right"
-        android:layout_marginTop="21dp"
+    <GridLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:onClick="codePromo"
-        android:text="Valider Code"
-        tools:ignore="OnClick"
-        android:visibility="visible"
-        />
+        android:layout_gravity="center"
+        android:clipToPadding="false"
+        android:columnCount="2"
+        android:padding="16dp">
 
-    <Button
-        android:id = "@+id/buttonPay"
-        android:layout_width = "wrap_content"
-        android:layout_height = "wrap_content"
-        android:onClick = "PayValid"
-        android:text = "Payer"
-        tools:ignore="OnClick"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonCodePromo"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp"
+            android:onClick="codePromo"
+            android:text="Valider Code"
+            android:textAlignment="center"
+            android:visibility="visible"
+            tools:ignore="OnClick" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonPay"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="21dp"
+            android:layout_marginTop="21dp"
+            android:onClick="PayValid"
+            android:text="Payer"
+            tools:ignore="OnClick" />
+
+    </GridLayout>
+
 
 </LinearLayout>
 
